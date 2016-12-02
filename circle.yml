@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: v6.1.0
+test:
+  pre:
+    - npm install -g angular-cli
+    - npm install
+  override:
+    - ng test
+deployment:
+  development:
+    branch: develop
+    commands:
+      - fab development:develop deploy
