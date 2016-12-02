@@ -1,0 +1,10 @@
+<a href="{{loginFacebookUrl}}" *ngIf=" ! session">Facebook login</a>
+
+<div *ngIf="session">
+  <div>id: {{ session.id }}</div>
+  <div>email: {{ session.email }}</div>
+  <div>first name: {{ session.first_name }}</div>
+  <div>last name: {{ session.last_name }}</div>
+
+  <a (click)="logout()" href="#">Logout</a>
+</div>
