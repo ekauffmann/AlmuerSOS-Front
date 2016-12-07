@@ -5,10 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './components/app.component';
 import { SessionService } from './services/session.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoresListComponent } from './components/stores-list/stores-list.component';
+import {StoreService} from "./services/stores.service";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StoresListComponent
   ],
   imports: [
     BrowserModule,
@@ -16,8 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot()
   ],
   providers: [
-    SessionService
+    SessionService,
+    StoreService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [StoresListComponent]
 })
 export class AppModule { }
