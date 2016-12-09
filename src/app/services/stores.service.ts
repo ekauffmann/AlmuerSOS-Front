@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs";
-import {Store} from "../classes/store";
+import {environment} from '../../environments/environment';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs';
+import {Store} from '../classes/store';
 
 @Injectable()
-export class StoreService {
+export class StoresService {
 
   private apiUrl = environment.API_BASE_URL + '/stores/';
 
