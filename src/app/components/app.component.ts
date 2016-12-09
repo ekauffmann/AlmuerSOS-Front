@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 import { Session } from '../classes/session';
-import { SessionService } from '../services/session.service';
+import { SessionService } from '../services/session/session.service';
 
 @Component({
   selector: 'app-root',

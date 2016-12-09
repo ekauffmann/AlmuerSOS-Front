@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {Store} from '../classes/store';
+import { environment } from '../../../environments/environment';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { Store } from '../../classes/store';
 
 @Injectable()
 export class StoresService {
@@ -13,13 +13,24 @@ export class StoresService {
 
   getStores (): Observable<Store[]> {
     return this.http.get(this.apiUrl)
-      .map(this.extractData)
+      .map(this.extractDataArray)
       .catch(this.handleError);
   }
 
-  private extractData (res: Response) {
+  getStore (storeId): Observable<Store> {
+    return this.http.get(this.apiUrl + storeId + '/')
+      .map(this.extractDataObject)
+      .catch(this.handleError);
+  }
+
+  private extractDataArray (res: Response) {
     let body = res.json();
     return body || [];
+  }
+
+  private extractDataObject (res: Response) {
+    let body = res.json();
+    return body || {};
   }
 
   private handleError (error: Response | any) {

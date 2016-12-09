@@ -4,8 +4,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { SessionService } from '../services/session.service';
-import { StoresService } from '../services/stores.service';
+import { SessionService } from '../services/session/session.service';
+import { StoresService } from '../services/stores/stores.service';
 import { StoresListComponent } from './stores-list/stores-list.component';
 
 describe('App: AlmuerSOSFront', () => {

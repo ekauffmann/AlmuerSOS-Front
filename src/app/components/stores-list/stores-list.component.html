@@ -1,9 +1,11 @@
-<div class="container">
+<div class="container container_root">
   <div class="col-md-4" *ngFor="let store of stores">
+    <img src="assets/img/placeholder_person.png" class="placeholder_person">
     <h3>{{ store.name }}</h3>
     <p>{{ store.description }}</p>
     <p>
-      <a class="btn btn-secondary" [routerLink]="['/stores']" role="button">Ver menú</a>
+      <a class="btn btn-secondary" [routerLink]="['/stores/', store.id]" role="button">Ver menú</a>
     </p>
   </div>
 </div>
+<hr/>

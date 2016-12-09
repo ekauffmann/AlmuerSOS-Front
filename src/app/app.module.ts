@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './components/app.component';
-import { SessionService } from './services/session.service';
+import { SessionService } from './services/session/session.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
-import { StoresService } from './services/stores.service';
+import { StoresService } from './services/stores/stores.service';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { StoreDetailsComponent } from './components/store-details/store-details.component';
+import { ProductsService } from './services/products/products.service';
 
 const ROUTES: Routes = [
+  {path: 'stores/:id', component: StoreDetailsComponent},
   {path: 'stores', component: StoresListComponent},
   {path: '', component: LandingPageComponent}
 ];
@@ -19,7 +22,8 @@ const ROUTES: Routes = [
   declarations: [
     AppComponent,
     StoresListComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    StoreDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ const ROUTES: Routes = [
   ],
   providers: [
     SessionService,
-    StoresService
+    StoresService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })

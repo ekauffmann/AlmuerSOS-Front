@@ -1,25 +1,25 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoresListComponent } from './stores-list.component';
+import { StoreDetailsComponent } from './store-details.component';
 import { HttpModule } from '@angular/http';
-import { StoresService } from '../../services/stores/stores.service';
+import { ProductsService } from '../../services/products/products.service';
 
-describe('StoresListComponent', () => {
-  let component: StoresListComponent;
-  let fixture: ComponentFixture<StoresListComponent>;
+describe('StoreDetailsComponent', () => {
+  let component: StoreDetailsComponent;
+  let fixture: ComponentFixture<StoreDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
-      declarations: [StoresListComponent],
-      providers: [StoresService]
+      declarations: [ StoreDetailsComponent ],
+      providers: [ProductsService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoresListComponent);
+    fixture = TestBed.createComponent(StoreDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

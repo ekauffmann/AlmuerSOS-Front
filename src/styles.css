@@ -18,3 +18,7 @@
   width: 200px;
   text-align: center;
 }
+
+.container_root {
+  padding: 5rem 0;
+}
