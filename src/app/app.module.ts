@@ -6,7 +6,7 @@ import { AppComponent } from './components/app.component';
 import { SessionService } from './services/session.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
-import {StoresService} from "./services/stores.service";
+import { StoresService } from './services/stores.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,6 @@ import {StoresService} from "./services/stores.service";
     SessionService,
     StoresService
   ],
-  bootstrap: [StoresListComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

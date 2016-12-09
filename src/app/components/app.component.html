@@ -1,15 +1,18 @@
-<div class="container" style="padding: 5rem 0;">
-  <a class="btn btn-primary" href="{{loginFacebookUrl}}" *ngIf=" ! session">Facebook login</a>
-
-  <div *ngIf="session">
-    <div>
-      <p>id: {{ session.id }}</p>
-      <p>email: {{ session.email }}</p>
-      <p>first name: {{ session.first_name }}</p>
-      <p>last name: {{ session.last_name }}</p>
-    </div>
-
-    <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
-  </div>
-
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <a class="navbar-brand" href="#">AlmuerSOS</a>
+  <ul class="nav navbar-nav">
+    <!--li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact</a>
+    </li-->
+  </ul>
+</nav>
+<div class="container container_root">
+  <app-stores-list>
+  </app-stores-list>
 </div>

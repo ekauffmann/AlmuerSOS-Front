@@ -2,8 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StoresListComponent } from './stores-list.component';
-import {HttpModule} from '@angular/http';
-import {StoresService} from '../../services/stores.service';
+import { HttpModule } from '@angular/http';
+import { StoresService } from '../../services/stores.service';
 
 describe('StoresListComponent', () => {
   let component: StoresListComponent;
@@ -12,7 +12,7 @@ describe('StoresListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
-      declarations: [ StoresListComponent ],
+      declarations: [StoresListComponent],
       providers: [StoresService]
     })
     .compileComponents();
