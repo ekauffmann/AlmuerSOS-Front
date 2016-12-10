@@ -1,36 +1,25 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { Http, Response } from '@angular/http';
-
-import { Observable }     from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
-import { environment } from '../../environments/environment';
-import { Session } from '../classes/session';
-
+import { Observable } from 'rxjs';
+import { Product } from '../../classes/product';
 
 @Injectable()
-export class SessionService {
+export class ProductsService {
 
-  private apiUrl = environment.API_BASE_URL + '/sessions/';
+  private apiUrl = environment.API_BASE_URL + '/stores/';
 
   constructor (private http: Http) {}
 
-  getSession (): Observable<Session> {
-    return this.http.get(this.apiUrl, {withCredentials: true})
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  logout (): Observable<Session> {
-    return this.http.delete(this.apiUrl, {withCredentials: true})
+  getProducts (storeId): Observable<Product[]> {
+    return this.http.get(this.apiUrl + storeId + '/products/')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   private extractData (res: Response) {
     let body = res.json();
-    return body || {};
+    return body || [];
   }
 
   private handleError (error: Response | any) {

@@ -1,23 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './components/app.component';
-import {SessionService} from './services/session.service';
+import { AppRoutingModule } from './app-routing.module';
+import { SessionService } from './services/session/session.service';
+import { StoresService } from './services/stores/stores.service';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { StoreDetailsComponent } from './components/store-details/store-details.component';
+import { ProductsService } from './services/products/products.service';
+import { StoresListComponent } from './components/stores-list/stores-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StoresListComponent,
+    LandingPageComponent,
+    StoreDetailsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
-    SessionService
+    SessionService,
+    StoresService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

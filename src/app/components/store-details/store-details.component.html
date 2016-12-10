@@ -1,0 +1,29 @@
+<div class="container container_root">
+  <div class="row" *ngIf="store">
+    <img src="http://placehold.it/1140x200">
+    <div class="details">
+      <h2>{{ store.name }}</h2>
+      <p>{{ store.description }}</p>
+      <p>Teléfono: {{ store.phone }}</p>
+      <p>{{ store.paymentMethods}}</p>
+      <div *ngIf="store.payment_methods">Medios de pago:</div>
+      <ul *ngIf="store.payment_methods">
+        <li *ngFor="let paymentMethod of store.payment_methods">{{ paymentMethod.name }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" *ngFor="let product of products">
+    <div class="col-md-8">
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.description }}</p>
+      <button class="btn btn-primary" role="button" disabled>Ver precios</button>
+    </div>
+    <div class="col-md-4">
+      <img src="http://placehold.it/350x150">
+    </div>
+  </div>
+  <div *ngIf=" ! products || products.length === 0">
+    <p class="center">No hay productos disponibles</p>
+  </div>
+</div>
+<hr/>
