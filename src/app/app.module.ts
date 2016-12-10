@@ -1,22 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './components/app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { SessionService } from './services/session/session.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StoresListComponent } from './components/stores-list/stores-list.component';
 import { StoresService } from './services/stores/stores.service';
-import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { StoreDetailsComponent } from './components/store-details/store-details.component';
 import { ProductsService } from './services/products/products.service';
-
-const ROUTES: Routes = [
-  {path: 'stores/:id', component: StoreDetailsComponent},
-  {path: 'stores', component: StoresListComponent},
-  {path: '', component: LandingPageComponent}
-];
+import { StoresListComponent } from './components/stores-list/stores-list.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +23,8 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     SessionService,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from '../../classes/store';
-import {StoresService} from '../../services/stores/stores.service';
+
+import { Store } from '../../classes/store';
+import { StoresService } from '../../services/stores/stores.service';
 
 @Component({
   selector: 'app-stores-list',
@@ -11,7 +12,9 @@ export class StoresListComponent implements OnInit {
 
   private stores: Store[];
 
-  constructor (private storeService: StoresService) {}
+  constructor (
+    private storeService: StoresService
+  ) {}
 
   ngOnInit (): void {
     this.getStores();
@@ -24,4 +27,5 @@ export class StoresListComponent implements OnInit {
       }
     );
   }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { ProductsService } from '../../services/products/products.service';
 import { Product } from '../../classes/product';
 import { Store } from '../../classes/store';
@@ -16,7 +17,11 @@ export class StoreDetailsComponent implements OnInit {
   private store: Store;
   private products: Product[];
 
-  constructor(private storeService: StoresService, private productService: ProductsService, private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private storeService: StoresService,
+    private productService: ProductsService
+  ) { }
 
   ngOnInit() {
     this.routerSubscribe = this.route.params.subscribe(params => {
