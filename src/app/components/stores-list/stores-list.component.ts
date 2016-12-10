@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
 import { Store } from '../../classes/store';
 import { StoresService } from '../../services/stores/stores.service';
+
 
 @Component({
   selector: 'app-stores-list',
@@ -10,10 +13,10 @@ import { StoresService } from '../../services/stores/stores.service';
 })
 export class StoresListComponent implements OnInit {
 
-  private stores: Store[];
+  private stores: Observable<Store[]>;
 
   constructor (
-    private storeService: StoresService
+    private storesService: StoresService
   ) {}
 
   ngOnInit (): void {
@@ -21,11 +24,7 @@ export class StoresListComponent implements OnInit {
   }
 
   getStores () {
-    this.storeService.getStores().subscribe(
-      stores => {
-        this.stores = stores;
-      }
-    );
+    this.stores = this.storesService.getStores();
   }
 
 }

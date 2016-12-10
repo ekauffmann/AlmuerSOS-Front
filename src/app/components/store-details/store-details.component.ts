@@ -1,37 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { Observable } from 'rxjs';
 
 import { ProductsService } from '../../services/products/products.service';
 import { Product } from '../../classes/product';
 import { Store } from '../../classes/store';
 import { StoresService } from '../../services/stores/stores.service';
 
+
 @Component({
   selector: 'app-store-details',
   templateUrl: './store-details.component.html',
   styleUrls: ['./store-details.component.css']
 })
-export class StoreDetailsComponent implements OnInit {
+export class StoreDetailsComponent implements OnInit, OnDestroy {
 
-  private routerSubscribe: any;
-  private store: Store;
-  private products: Product[];
+  private routerSubscription$: any;
+
+  private store: Observable<Store>;
+  private products: Observable<Product[]>;
 
   constructor(
     private route: ActivatedRoute,
-    private storeService: StoresService,
-    private productService: ProductsService
+    private storesService: StoresService,
+    private productsService: ProductsService
   ) { }
 
   ngOnInit() {
-    this.routerSubscribe = this.route.params.subscribe(params => {
+    this.routerSubscription$ = this.route.params.subscribe(params => {
       let id = params['id'];
-      this.storeService.getStore(id).subscribe(store => {
-        this.store = store;
-      });
-      this.productService.getProducts(id).subscribe(products => {
-        this.products = products;
-      });
+      this.store = this.storesService.getStore(id);
+      this.products = this.productsService.getProducts(id);
     });
   }
+
+  ngOnDestroy() {
+    this.routerSubscription$.unsubscribe();
+  }
+
 }

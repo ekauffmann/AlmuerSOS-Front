@@ -7,6 +7,11 @@
   margin-bottom: 20px;
 }
 
-.details {
+.store_details {
   margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.store_payment_methods .tag {
+  margin-right: 5px;
 }

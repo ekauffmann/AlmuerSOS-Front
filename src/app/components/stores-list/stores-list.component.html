@@ -1,6 +1,6 @@
 <div class="container container_root">
   <div class="row flex-items-xs-center">
-    <div class="col-xs-12 col-sm-6 col-md-4 col_store center" *ngFor="let store of stores">
+    <div class="col-xs-12 col-sm-6 col-md-4 col_store center" *ngFor="let store of stores | async">
       <img src="assets/img/placeholder_person.png" class="placeholder_person">
       <h3>{{ store.name }}</h3>
       <p class="justify">{{ store.description }}</p>
@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf=" ! stores || stores.length === 0">
+  <div *ngIf="stores.length === 0 | async">
     <p class="center">No hay tiendas disponibles</p>
   </div>
 </div>

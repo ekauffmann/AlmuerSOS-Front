@@ -1,33 +1,31 @@
 <div class="container container_root">
-  <div class="row" *ngIf="store">
+  <div class="row" *ngIf="(store | async)?.id">
     <div class="col-xs-12 col_store">
       <img class="image" src="http://placehold.it/1140x200">
-      <div class="details">
-        <h2>{{ store.name }}</h2>
-        <p>{{ store.description }}</p>
-        <p>Teléfono: {{ store.phone }}</p>
-        <p>{{ store.paymentMethods}}</p>
-        <div *ngIf="store.payment_methods">Medios de pago:</div>
-        <ul *ngIf="store.payment_methods">
-          <li *ngFor="let paymentMethod of store.payment_methods">{{ paymentMethod.name }}</li>
-        </ul>
+      <div class="store_details">
+        <h2>{{ (store | async)?.name }}</h2>
+        <p>{{ (store | async)?.description }}</p>
+        <p><strong>Teléfono</strong>: {{ (store | async)?.phone }}</p>
+        <h5 class="store_payment_methods" *ngIf="(store | async)?.payment_methods.length > 0">
+          <span class="tag tag-pill tag-primary" *ngFor="let paymentMethod of (store | async)?.payment_methods">{{ paymentMethod.name }}</span>
+        </h5>
       </div>
     </div>
   </div>
-  <div class="row row_product" *ngFor="let product of products">
+  <div class="row row_product" *ngFor="let product of products | async">
     <div class="col-xs-12 visible-sm-down hidden-sm-up">
       <img class="image" src="http://placehold.it/350x150">
     </div>
     <div class="col-xs-12 col-sm-6 col-md-8">
       <h4>{{ product.name }}</h4>
       <p>{{ product.description }}</p>
-      <button class="btn btn-primary" role="button" disabled>Ver precios</button>
+      <button class="btn btn-success" role="button" disabled>Ver precios</button>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 hidden-xs-down visible-sm-up">
       <img class="image" src="http://placehold.it/350x150">
     </div>
   </div>
-  <div *ngIf=" ! products || products.length === 0">
+  <div *ngIf="(products | async)?.length === 0">
     <p class="center">No hay productos disponibles</p>
   </div>
 </div>
