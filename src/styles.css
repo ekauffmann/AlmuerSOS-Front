@@ -19,6 +19,22 @@
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.justify {
+  text-align: justify;
+}
+
 .container_root {
   padding: 5rem 0;
+}
+
+.container_footer {
+  margin: 1rem auto;
 }

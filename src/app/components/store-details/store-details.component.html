@@ -22,5 +22,8 @@
       <img src="http://placehold.it/350x150">
     </div>
   </div>
+  <div *ngIf=" ! products || products.length === 0">
+    <p class="center">No hay productos disponibles</p>
+  </div>
 </div>
 <hr/>
