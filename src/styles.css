@@ -32,9 +32,9 @@
 }
 
 .container_root {
-  padding: 5rem 0;
+  padding-top: 5rem;
 }
 
 .container_footer {
-  margin: 1rem auto;
+  margin-top: 1rem;
 }
