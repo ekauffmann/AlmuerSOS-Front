@@ -1,4 +1,12 @@
 <div class="container container_root">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['']">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Tiendas</li>
+  </ol>
+</div>
+<div class="container">
   <div class="row flex-items-xs-center">
     <div class="col-xs-12 col-sm-6 col-md-4 col_store center" *ngFor="let store of stores | async">
       <img src="assets/img/placeholder_person.png" class="placeholder_person">

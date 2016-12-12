@@ -1,4 +1,15 @@
 <div class="container container_root">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['']">Inicio</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/stores']">Tiendas</a>
+    </li>
+    <li class="breadcrumb-item active">Detalles</li>
+  </ol>
+</div>
+<div class="container">
   <div class="row" *ngIf="(store | async)?.id">
     <div class="col-xs-12 col_store">
       <img class="image" src="http://placehold.it/1140x200">
