@@ -85,7 +85,7 @@ def build_project():
     with shell_env(HOME=env.home), cd(env.git_repo_path):
         sudo('npm install', user=env.deploy_user)
         sudo(
-            'ng build --environment={0:s}'.format(env.name),
+            'ng build --target=production --environment={0:s}'.format(env.name),
             user=env.deploy_user
         )
         sudo('rm -f current && ln -s dist current', user=env.deploy_user)
