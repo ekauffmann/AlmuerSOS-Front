@@ -18,7 +18,8 @@ describe('StoresListComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([
-          {path: 'stores/:id', component: DummyComponent}
+          {path: '', component: DummyComponent},
+          {path: 'stores', component: DummyComponent}
         ])
       ],
       declarations: [StoresListComponent, DummyComponent],
