@@ -11,6 +11,7 @@ import { DummyComponent } from '../../app-testing';
 import { ProductsService } from '../../services/products/products.service';
 import { StoresService } from '../../services/stores/stores.service';
 import { StoreDetailsComponent } from './store-details.component';
+import { ServiceDaysService } from '../../services/service-days/service-days.service';
 
 
 describe('StoreDetailsComponent', () => {
@@ -32,6 +33,7 @@ describe('StoreDetailsComponent', () => {
       providers: [
         StoresService,
         ProductsService,
+        ServiceDaysService,
         {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}
       ]
     })

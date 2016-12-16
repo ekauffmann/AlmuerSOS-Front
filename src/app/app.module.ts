@@ -12,6 +12,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { StoreDetailsComponent } from './components/store-details/store-details.component';
 import { ProductsService } from './services/products/products.service';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
+import { ServiceDaysService } from './services/service-days/service-days.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StoresListComponent } from './components/stores-list/stores-list.compon
   providers: [
     SessionService,
     StoresService,
-    ProductsService
+    ProductsService,
+    ServiceDaysService,
   ],
   bootstrap: [AppComponent]
 })

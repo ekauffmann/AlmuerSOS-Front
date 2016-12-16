@@ -23,20 +23,21 @@
       </div>
     </div>
   </div>
-  <div class="row row_product" *ngFor="let product of products | async">
+  <div class="row row_product" *ngFor="let serviceDay of serviceDays | async">
     <div class="col-xs-12 visible-sm-down hidden-sm-up">
       <img class="image" src="http://placehold.it/350x150">
     </div>
     <div class="col-xs-12 col-sm-6 col-md-8">
-      <h4>{{ product.name }}</h4>
-      <p>{{ product.description }}</p>
-      <button class="btn btn-success" role="button" disabled>Ver precios</button>
+      <h4>{{ serviceDay.product.name }}</h4>
+      <p>{{ serviceDay.product.description }}</p>
+      <p>${{ serviceDay.price }}</p>
+      <button class="btn btn-success" role="button" disabled>Reservar</button>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 hidden-xs-down visible-sm-up">
       <img class="image" src="http://placehold.it/350x150">
     </div>
   </div>
-  <div *ngIf="(products | async)?.length === 0">
+  <div *ngIf="(serviceDays | async)?.length === 0">
     <p class="center">No hay productos disponibles</p>
   </div>
 </div>

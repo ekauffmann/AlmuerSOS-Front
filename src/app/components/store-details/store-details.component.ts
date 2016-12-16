@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { ProductsService } from '../../services/products/products.service';
-import { Product } from '../../classes/product';
+import { ServiceDay } from '../../classes/service-day';
+import { ServiceDaysService } from '../../services/service-days/service-days.service';
 import { Store } from '../../classes/store';
 import { StoresService } from '../../services/stores/stores.service';
 
@@ -19,19 +19,19 @@ export class StoreDetailsComponent implements OnInit, OnDestroy {
   private routerSubscription$: any;
 
   private store: Observable<Store>;
-  private products: Observable<Product[]>;
+  private serviceDays: Observable<ServiceDay[]>;
 
   constructor(
     private route: ActivatedRoute,
     private storesService: StoresService,
-    private productsService: ProductsService
+    private serviceDaysService: ServiceDaysService
   ) { }
 
   ngOnInit() {
-    this.routerSubscription$ = this.route.params.subscribe(params => {
-      let id = params['id'];
+    this.routerSubscription$ = this.route.params.subscribe(urlParams => {
+      let id = urlParams['id'];
       this.store = this.storesService.getStore(id);
-      this.products = this.productsService.getProducts(id);
+      this.serviceDays = this.serviceDaysService.getServiceDays(id);
     });
   }
 
