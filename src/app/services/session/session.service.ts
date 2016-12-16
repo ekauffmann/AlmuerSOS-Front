@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { environment } from '../../../environments/environment';
-import { Session } from '../../classes/session';
+import { User } from '../../classes/user';
 
 
 @Injectable()
@@ -16,13 +16,13 @@ export class SessionService {
 
   constructor (private http: Http) {}
 
-  getSession (): Observable<Session> {
+  getSessionUser (): Observable<User> {
     return this.http.get(this.apiUrl, {withCredentials: true})
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  logout (): Observable<Session> {
+  logout (): Observable<User> {
     return this.http.delete(this.apiUrl, {withCredentials: true})
       .map(this.extractData)
       .catch(this.handleError);

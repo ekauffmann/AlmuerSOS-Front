@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { Store } from '../../classes/store';
 import { StoresService } from '../../services/stores/stores.service';
+import { SessionService } from '../../services/session/session.service';
+import { User } from '../../classes/user';
 
 
 @Component({
@@ -14,17 +16,37 @@ import { StoresService } from '../../services/stores/stores.service';
 export class StoresListComponent implements OnInit {
 
   private stores: Observable<Store[]>;
+  private user: User;
 
   constructor (
+    private sessionService: SessionService,
     private storesService: StoresService
   ) {}
 
   ngOnInit (): void {
+    this.getSessionUser();
     this.getStores();
   }
 
   getStores () {
     this.stores = this.storesService.getStores();
+  };
+
+  getSessionUser () {
+    this.sessionService.getSessionUser().subscribe(
+      session => {
+        this.user = (Object.keys(session).length !== 0) ? session : null;
+      }
+    );
+  }
+
+  isThisUserManager (store: Store): boolean {
+    for (let manager of store.managers) {
+      if (manager.id === this.user.id) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }

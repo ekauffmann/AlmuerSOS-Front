@@ -1,4 +1,5 @@
 import { PaymentMethod } from './payment-method';
+import { User } from './user';
 
 
 export class Store {
@@ -7,4 +8,5 @@ export class Store {
   phone: string;
   description: string;
   payment_methods: PaymentMethod[];
+  managers: User[];
 }

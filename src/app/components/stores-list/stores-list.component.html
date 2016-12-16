@@ -15,6 +15,7 @@
       <div class="btn_store_container_dummy"></div>
       <div class="btn_store_container">
         <a class="btn btn-primary" [routerLink]="['/stores/', store.id]" role="button">Ver menú</a>
+        <a class="btn btn-success" [routerLink]="['/stores/', store.id]" role="button" *ngIf="isThisUserManager(store)">Administrar</a>
       </div>
     </div>
   </div>

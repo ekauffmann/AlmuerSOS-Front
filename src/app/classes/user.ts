@@ -1,4 +1,4 @@
-export class Session {
+export class User {
   id: number;
   email: string;
   first_name: string;
