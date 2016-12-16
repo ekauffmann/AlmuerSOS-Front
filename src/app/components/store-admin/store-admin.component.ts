@@ -29,7 +29,10 @@ export class StoreAdminComponent implements OnInit, OnDestroy {
     this.getSessionUser();
     this.routerSubscription$ = this.route.params.subscribe(urlParams => {
       let id = urlParams['id'];
-      this.storesService.getStore(id).subscribe(store => this.store = store);
+      this.storesService.getStore(id).subscribe(store => {
+        console.log(store);
+        this.store = store;
+      });
     });
   }
 
@@ -47,7 +50,7 @@ export class StoreAdminComponent implements OnInit, OnDestroy {
   }
 
   saveStore() {
-    this.storesService.saveStore(this.store).subscribe(x => console.log(x));
+    this.storesService.saveStore(this.store).subscribe();
   }
 
   isThisUserManager(): boolean {

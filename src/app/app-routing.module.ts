@@ -8,8 +8,8 @@ import { StoreAdminComponent } from './components/store-admin/store-admin.compon
 
 
 const ROUTES: Routes = [
-  {path: 'stores/:id', component: StoreDetailsComponent},
   {path: 'stores/:id/admin', component: StoreAdminComponent},
+  {path: 'stores/:id', component: StoreDetailsComponent},
   {path: 'stores', component: StoresListComponent},
   {path: '', component: LandingPageComponent}
 ];

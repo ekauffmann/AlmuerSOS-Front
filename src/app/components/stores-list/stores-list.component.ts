@@ -18,9 +18,10 @@ export class StoresListComponent implements OnInit {
   private stores: Observable<Store[]>;
   private user: User;
 
-  constructor(private sessionService: SessionService,
-              private storesService: StoresService) {
-  }
+  constructor(
+    private sessionService: SessionService,
+    private storesService: StoresService
+  ) { }
 
   ngOnInit(): void {
     this.getSessionUser();

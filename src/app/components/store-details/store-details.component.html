@@ -6,7 +6,7 @@
     <li class="breadcrumb-item">
       <a [routerLink]="['/stores']">Tiendas</a>
     </li>
-    <li class="breadcrumb-item active">Detalles</li>
+    <li class="breadcrumb-item active">{{ (store | async)?.name }}</li>
   </ol>
 </div>
 <div class="container">
