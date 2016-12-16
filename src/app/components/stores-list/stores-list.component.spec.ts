@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { DummyComponent } from '../../app-testing';
 import { StoresListComponent } from './stores-list.component';
 import { StoresService } from '../../services/stores/stores.service';
+import { SessionService } from '../../services/session/session.service';
 
 
 describe('StoresListComponent', () => {
@@ -23,7 +24,7 @@ describe('StoresListComponent', () => {
         ])
       ],
       declarations: [StoresListComponent, DummyComponent],
-      providers: [StoresService]
+      providers: [StoresService, SessionService]
     })
     .compileComponents();
   }));

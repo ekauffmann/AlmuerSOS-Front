@@ -3,37 +3,58 @@ import { environment } from '../../../environments/environment';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Store } from '../../classes/store';
+import { User } from '../../classes/user';
 
 @Injectable()
 export class StoresService {
 
   private apiUrl = environment.API_BASE_URL + '/stores/';
 
-  constructor (private http: Http) {}
+  constructor(private http: Http) {
+  }
 
-  getStores (): Observable<Store[]> {
+  static isUserStoreManager(store: Store, user: User): boolean {
+     if (user === null) {
+      return false;
+    }
+    for (let manager of store.managers) {
+      if (manager.id === user.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  getStores(): Observable<Store[]> {
     return this.http.get(this.apiUrl)
       .map(this.extractDataArray)
       .catch(this.handleError);
   }
 
-  getStore (storeId): Observable<Store> {
+  getStore(storeId): Observable<Store> {
     return this.http.get(this.apiUrl + storeId + '/')
       .map(this.extractDataObject)
       .catch(this.handleError);
   }
 
-  private extractDataArray (res: Response) {
+  saveStore(store: Store): Observable<any> {
+    return this.http.put(this.apiUrl + store.id + '/', store, {withCredentials: true})
+      .map(this.extractDataObject)
+      .catch(this.handleError);
+  }
+
+  private extractDataArray(res: Response) {
     let body = res.json();
     return body || [];
   }
 
-  private extractDataObject (res: Response) {
+  private extractDataObject(res: Response) {
     let body = res.json();
     return body || {};
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
 
     if (error instanceof Response) {

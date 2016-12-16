@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
@@ -13,17 +14,21 @@ import { StoreDetailsComponent } from './components/store-details/store-details.
 import { ProductsService } from './services/products/products.service';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
 import { ServiceDaysService } from './services/service-days/service-days.service';
+import { StoreAdminComponent } from './components/store-admin/store-admin.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     StoresListComponent,
     LandingPageComponent,
-    StoreDetailsComponent
+    StoreDetailsComponent,
+    StoreAdminComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     NgbModule.forRoot(),
     AppRoutingModule
   ],

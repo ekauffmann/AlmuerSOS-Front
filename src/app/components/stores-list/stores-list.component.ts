@@ -18,21 +18,20 @@ export class StoresListComponent implements OnInit {
   private stores: Observable<Store[]>;
   private user: User;
 
-  constructor (
-    private sessionService: SessionService,
-    private storesService: StoresService
-  ) {}
+  constructor(private sessionService: SessionService,
+              private storesService: StoresService) {
+  }
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.getSessionUser();
     this.getStores();
   }
 
-  getStores () {
+  getStores() {
     this.stores = this.storesService.getStores();
   };
 
-  getSessionUser () {
+  getSessionUser() {
     this.sessionService.getSessionUser().subscribe(
       session => {
         this.user = (Object.keys(session).length !== 0) ? session : null;
@@ -40,13 +39,7 @@ export class StoresListComponent implements OnInit {
     );
   }
 
-  isThisUserManager (store: Store): boolean {
-    for (let manager of store.managers) {
-      if (manager.id === this.user.id) {
-        return true;
-      }
-    }
-    return false;
+  isThisUserManager(store: Store): boolean {
+    return StoresService.isUserStoreManager(store, this.user);
   }
-
 }
