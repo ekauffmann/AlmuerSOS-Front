@@ -37,12 +37,13 @@ export class StoreAdminComponent implements OnInit, OnDestroy {
     this.routerSubscription$.unsubscribe();
   }
 
-  getSessionUser() {
-    this.sessionService.getSessionUser().subscribe(
-      session => {
-        this.user = (Object.keys(session).length !== 0) ? session : null;
+  getSessionUser () {
+    this.sessionService.getSessionSubject().subscribe(
+      sessionUser => {
+        this.user = sessionUser;
       }
     );
+    this.sessionService.getSession();
   }
 
   saveStore() {

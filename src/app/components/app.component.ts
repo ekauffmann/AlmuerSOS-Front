@@ -22,16 +22,15 @@ export class AppComponent implements OnInit {
   }
 
   getSessionUser () {
-    this.sessionService.getSessionUser().subscribe(
-      session => {
-        this.user = (Object.keys(session).length !== 0) ? session : null;
+    this.sessionService.getSessionSubject().subscribe(
+      sessionUser => {
+        this.user = sessionUser;
       }
     );
+    this.sessionService.getSession();
   }
 
   logout () {
-    this.sessionService.logout().subscribe(
-      session => this.user = null
-    );
+    this.sessionService.logout();
   }
 }

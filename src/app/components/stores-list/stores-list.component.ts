@@ -31,12 +31,13 @@ export class StoresListComponent implements OnInit {
     this.stores = this.storesService.getStores();
   };
 
-  getSessionUser() {
-    this.sessionService.getSessionUser().subscribe(
-      session => {
-        this.user = (Object.keys(session).length !== 0) ? session : null;
+  getSessionUser () {
+    this.sessionService.getSessionSubject().subscribe(
+      sessionUser => {
+        this.user = sessionUser;
       }
     );
+    this.sessionService.getSession();
   }
 
   isThisUserManager(store: Store): boolean {
