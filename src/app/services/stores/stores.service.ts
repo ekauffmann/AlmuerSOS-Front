@@ -10,9 +10,6 @@ export class StoresService {
 
   private apiUrl = environment.API_BASE_URL + '/stores/';
 
-  constructor(private http: Http) {
-  }
-
   static isUserStoreManager(store: Store, user: User): boolean {
      if (user === null) {
       return false;
@@ -25,6 +22,8 @@ export class StoresService {
     return false;
   }
 
+  constructor(private http: Http) {
+  }
 
   getStores(): Observable<Store[]> {
     return this.http.get(this.apiUrl)
