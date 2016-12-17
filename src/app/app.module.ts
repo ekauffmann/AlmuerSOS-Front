@@ -29,8 +29,8 @@ import { StoreAdminComponent } from './components/store-admin/store-admin.compon
     BrowserModule,
     HttpModule,
     FormsModule,
-    NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [
     SessionService,

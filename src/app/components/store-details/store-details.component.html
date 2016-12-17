@@ -12,7 +12,8 @@
 <div class="container">
   <div class="row" *ngIf="(store | async)?.id">
     <div class="col-xs-12 col_store">
-      <img class="image" src="http://placehold.it/1140x200">
+      <img class="store_image" src="http://placehold.it/1110x200" *ngIf=" ! (storeImage | async)" />
+      <img class="store_image" [src]="(storeImage | async)?.file" *ngIf="(storeImage | async)" />
       <div class="store_details">
         <h2>{{ (store | async)?.name }}</h2>
         <p>{{ (store | async)?.description }}</p>
