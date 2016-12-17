@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap/alert/alert';
+import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap/tabset/tabset';
+
 import { DummyComponent } from '../../app-testing';
 import { StoreAdminComponent } from './store-admin.component';
 import { SessionService } from '../../services/session/session.service';
@@ -23,8 +26,17 @@ describe('StoreAdminComponent', () => {
           {path: 'stores/:id', component: DummyComponent}
         ])
       ],
-      declarations: [ StoreAdminComponent, DummyComponent ],
-      providers: [ SessionService, StoresService ]
+      declarations: [
+        StoreAdminComponent,
+        DummyComponent,
+        NgbAlert,
+        NgbTabset,
+        NgbTab
+      ],
+      providers: [
+        SessionService,
+        StoresService
+      ]
     })
     .compileComponents();
   }));
